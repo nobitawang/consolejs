@@ -183,8 +183,6 @@ THE SOFTWARE.
     }
     consoles[el] = this;
 
-
-
     var limbo = create('div');
     while (node = el.childNodes[0])
       limbo.appendChild(node);
