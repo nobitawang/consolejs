@@ -98,7 +98,9 @@ var console = Console('elementId');</pre>
     </ul>
     <script src="console.js"></script>
     <script>
-    var console = Console('console');
+    var console = Console('console', {
+      commandSupport: true
+    });
     console.log('console.js is a console in the browser for you to use how you please');
     console.log('give it a try!');
     </script>
