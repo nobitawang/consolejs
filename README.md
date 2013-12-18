@@ -70,17 +70,3 @@ TODO
 * Profit???
 
 Copyright (C) 2011 by Marty Zalega. MIT License
-
-Nobita version
-------------------
-### v1.0.0-n
-* add a option object for configure
-
-```javascript
-  var console = Console('console', {
-    commandSupport: false, //it can let the console just become to readonly
-    scope: window
-  });
-```
-
-Copyright (C) 2011 by Nobita. MIT License

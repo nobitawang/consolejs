@@ -158,19 +158,11 @@ THE SOFTWARE.
       }
     });
   }
-  var Console = function(el, option) {
-    var config = {
-        commandSupport: true,
-        scope: window
-    };
-    if (typeof option == 'object') {
-      for (var p in option) {
-          config[p] = option[p];
-      }
-    }
+
+  var Console = function(el, scope) {
     if (typeof el == 'string')
       el = document.getElementById(el);
-    var scope = config.scope;
+
     var console = consoles[el];
     if (console) {
       console.cd(scope);
@@ -178,12 +170,12 @@ THE SOFTWARE.
     }
     else if (!(this instanceof Console)) {
       if (!console)
-        console = new Console(el, option);
+        console = new Console(el, scope);
       return console;
     }
     consoles[el] = this;
 
-
+    scope || (scope = window);
 
     var limbo = create('div');
     while (node = el.childNodes[0])
@@ -191,15 +183,8 @@ THE SOFTWARE.
 
     var container      = create('div', {'class': 'console-container'}),
         inputContainer = create('p', {'class': 'console-input'}),
-        original       = {className: el.className, tabIndex: el.tabIndex},
-        input;
-    if (config.commandSupport) {
-        input = create('textarea', {row: 1});
-    } else {
-        input = create('textarea', {row: 1, disabled: 'disabled'});
-    }
-
-
+        input          = create('textarea', {row: 1}),
+        original       = {className: el.className, tabIndex: el.tabIndex};
     inputContainer.appendChild(input);
     container.appendChild(inputContainer);
     addClass(el, 'console').appendChild(container);
